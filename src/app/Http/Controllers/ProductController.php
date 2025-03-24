@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 
 class ProductController extends Controller
 {
@@ -30,5 +31,21 @@ class ProductController extends Controller
     public function register()
     {
         return view('register');
+    }
+
+    public function store(RegisterRequest $request)
+    {
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images');
+        } else {
+            $path = null;
+        }
+        Product::create([
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'image' => $path,
+            'description' => $request->input('description')
+        ]);
+        return redirect('product');
     }
 }
