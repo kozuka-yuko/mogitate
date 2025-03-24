@@ -1,0 +1,10 @@
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+svg.w-5.h-5 {
+    width: 30px;
+    height: 30px;
+}
