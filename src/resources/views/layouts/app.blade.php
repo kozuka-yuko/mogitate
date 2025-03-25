@@ -34,6 +34,7 @@
     <div class="content">
         @yield('content')
     </div>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

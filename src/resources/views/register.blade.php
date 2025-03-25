@@ -7,17 +7,17 @@
 @section('content')
 <div class="register">
     <h1 class="title">商品登録</h1>
-    <form action="" class="register-product" method="post" enctype="multipart/form-data">
+    <form action="{{ route('store') }}" class="register-product" method="post" enctype="multipart/form-data">
         @csrf
         <p class="list">商品名 <span class="tag">必須</span></p>
-        <input type="text" id="name" class="list__inner" placeholder="商品名を入力">
+        <input type="text" name="name" id="name" class="list__inner" value="{{ old('name') }}" placeholder="商品名を入力">
         <div class="form__error">
             @error('name')
             {{ $message }}
             @enderror
         </div>
         <p class="list">値段 <span class="tag">必須</span></p>
-        <input type="text" id="price" class="list__inner" placeholder="値段を入力">
+        <input type="text" name="price" id="price" class="list__inner" value="{{ old('price') }}" placeholder="値段を入力">
         <div class="form__error">
             @error('price')
             {{ $message }}
@@ -31,14 +31,10 @@
             @enderror
         </div>
         <p class="list">季節 <span class="tag">必須</span> <span class="able">複数選択可</span></p>
-        <input type="radio" class="season" id="season1" value="春 {{ old('season') == '春' ? 'checked' : '' }} checked">
-        <label for="season1" class="season__inner">春</label>
-        <input type="radio" class="season" id="season2" value="夏 {{ old('season') == '夏' ? 'checked' : '' }} checked">
-        <label for="season2" class="season__inner">夏</label>
-        <input type="radio" class="season" id="season3" value="秋 {{ old('season') == '秋' ? 'checked' : '' }} checked">
-        <label for="season3" class="season__inner">秋</label>
-        <input type="radio" class="season" id="season4" value="冬 {{ old('season') == '冬' ? 'checked' : '' }} checked">
-        <label for="season4" class="season__inner">冬</label>
+        @foreach ($seasons as $season)
+        <input type="checkbox" class="seasons" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
+        <label for="seasons" class="season__inner">{{ $season->name }}</label>
+        @endforeach
         <div class="form__error">
             @error('season')
             {{ $message }}

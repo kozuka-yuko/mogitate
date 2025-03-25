@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'price' => 'required|integer|max:10000',
-            'season' => 'required',
+            'seasons' => 'required',
             'image' => 'required|image',
             'description' => 'required'
         ];
@@ -37,7 +37,7 @@ class RegisterRequest extends FormRequest
             'price.required' => '値段を入力してください',
             'price.integer' =>'数値で入力してください',
             'price.max' => '0~10000円以内で入力してください',
-            'season.required' => '季節を選択してください',
+            'seasons.required' => '季節を選択してください',
             'image.required' => '商品画像を登録してください',
             'image.image' => '「.png」または「.jpeg」形式でアップロードしてください',
         ];
