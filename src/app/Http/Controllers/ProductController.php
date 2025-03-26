@@ -52,6 +52,6 @@ class ProductController extends Controller
         if ($request->has('seasons')) {
             $product->seasons()->attach($request->input('seasons'));
         }
-        return redirect('product');
+        return redirect()->route('index');
     }
 }
