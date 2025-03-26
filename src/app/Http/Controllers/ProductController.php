@@ -38,14 +38,14 @@ class ProductController extends Controller
     public function store(RegisterRequest $request)
     {
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/images');
+            $path = $request->file('image')->store('images', 'public');
         } else {
             $path = null;
         }
         $product = Product::create([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
-            'image' => $path,
+            'image' => $path ? 'storage/' . $path : null,
             'description' => $request->input('description')
         ]);
 

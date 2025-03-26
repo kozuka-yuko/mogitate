@@ -1,4 +1,4 @@
-@extends('layouts.app')
+div@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
@@ -24,15 +24,17 @@
 </div>
 <div class="product">
     @foreach ($products as $product)
-    <div class="product__inner">
-        <div class="img">
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img__photo">
+    <a href="{{ route('') }}" class="card-link">
+        <div class="product__inner">
+            <div class="img">
+                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="img__photo">
+            </div>
+            <div class="info">
+                <p class="fruit-name">{{ $product->name }}</p>
+                <p class="price">￥{{ $product->price }}</p>
+            </div>
         </div>
-        <div class="info">
-            <p class="fruit-name">{{ $product->name }}</p>
-            <p class="price">￥{{ $product->price }}</p>
-        </div>
-    </div>
+    </a>
     @endforeach
     
 </div>
