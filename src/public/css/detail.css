@@ -1,0 +1,42 @@
+.update-form {
+    text-align: center;
+}
+
+.image,
+.detail {
+    display: inline-block;
+}
+
+.name,
+.price,
+.season,
+.description__inner {
+    text-align: left;
+}
+
+.description__inner {
+    padding: 10px;
+}
+
+.back-btn {
+    padding: 5px 30px;
+    margin-right: 10px;
+    border: none;
+    background-color: #dddddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.update {
+    padding: 5px 30px;
+    margin-right: 80px;
+    border: none;
+    background-color: #ffd24b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete {
+    border: none;
+}

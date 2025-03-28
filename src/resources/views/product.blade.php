@@ -1,4 +1,4 @@
-div@extends('layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
@@ -15,7 +15,7 @@ div@extends('layouts.app')
         <input type="text" class="fruit-name" name="name_input" placeholder="商品名で検索" value="{{ old('name_input') }}">
         <button class="search__button" type="submit">検索</button>
         <h3>価格順で表示</h3>
-        <select name="price" id="price" class="sort-by-price">
+        <select name="sortByPrice" id="sortByPrice" class="sort-by-price">
             <option value="">選択してください</option>
             <option value="asc">安い順</option>
             <option value="desc">高い順</option>
@@ -24,7 +24,7 @@ div@extends('layouts.app')
 </div>
 <div class="product">
     @foreach ($products as $product)
-    <a href="{{ route('') }}" class="card-link">
+    <a href="{{ route('detail', $product->id) }}" class="card-link">
         <div class="product__inner">
             <div class="img">
                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="img__photo">
@@ -36,6 +36,8 @@ div@extends('layouts.app')
         </div>
     </a>
     @endforeach
-    
+</div>
+<div class="paginate">
+    {{ $products->links() }}
 </div>
 @endsection

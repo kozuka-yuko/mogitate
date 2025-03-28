@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
             'price' => 'required|integer|max:10000',
             'seasons' => 'required',
             'image' => 'required|image',
-            'description' => 'required'
+            'description' => 'required|max:120'
         ];
     }
 
@@ -40,6 +40,8 @@ class RegisterRequest extends FormRequest
             'seasons.required' => '季節を選択してください',
             'image.required' => '商品画像を登録してください',
             'image.image' => '「.png」または「.jpeg」形式でアップロードしてください',
+            'description.required' => '商品説明を入力してください',
+            'description.max' => '120文字以内で入力してください',
         ];
     }
 }

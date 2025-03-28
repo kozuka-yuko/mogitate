@@ -49,7 +49,7 @@
         </div>
         <div class="button">
             <a href="{{ route('index') }}" class="back__btn">戻る</a>
-            <button class="register__btn">登録</button>
+            <button class="register__btn" type="submit">登録</button>
         </div>
     </form>
 </div>
